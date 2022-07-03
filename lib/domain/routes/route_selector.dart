@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pivo_test/data/constants/theme.dart';
 import 'package:pivo_test/domain/routes/route_generator.dart';
@@ -19,17 +20,19 @@ class RouteSelector extends StatelessWidget {
         statusBarColor: Colors.transparent,
       ),
     );
-    return ScreenUtilInit(
-        designSize: const Size(375, 854),
-        builder: (context, child) {
-          return MaterialApp(
-            theme: CustomTheme.getTheme(),
-            debugShowCheckedModeBanner: false,
-            title: StringConst.appName,
-            color: ColorConst.whiteColor,
-            onGenerateRoute: RouteGenerator.generateRoute,
-            initialRoute: RouteGenerator.onboarding,
-          );
-        });
+    return ProviderScope(
+      child: ScreenUtilInit(
+          designSize: const Size(375, 854),
+          builder: (context, child) {
+            return MaterialApp(
+              theme: CustomTheme.getTheme(),
+              debugShowCheckedModeBanner: false,
+              title: StringConst.appName,
+              color: ColorConst.whiteColor,
+              onGenerateRoute: RouteGenerator.generateRoute,
+              initialRoute: RouteGenerator.onboarding,
+            );
+          }),
+    );
   }
 }

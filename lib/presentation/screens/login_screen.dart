@@ -215,17 +215,21 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Consumer(builder: (context, ref, child) {
                     if (ref.watch(signInProvider).isLoading) {
-                      return Align(
-                        alignment: Alignment.center,
-                        child: Platform.isIOS
-                            ? const CircularProgressIndicator.adaptive(
-                                backgroundColor: ColorConst.whiteColor,
-                              )
-                            : const CircularProgressIndicator(
-                                valueColor: AlwaysStoppedAnimation<Color>(
-                                  ColorConst.whiteColor,
+                      return Container(
+                         width: size.width,
+                        height: 70.0.h,
+                        color: ColorConst.primaryColor,
+                        child: Center(
+                          child: Platform.isIOS
+                              ? const CircularProgressIndicator.adaptive(
+                                  backgroundColor: ColorConst.whiteColor,
+                                )
+                              : const CircularProgressIndicator(
+                                  valueColor: AlwaysStoppedAnimation<Color>(
+                                    ColorConst.whiteColor,
+                                  ),
                                 ),
-                              ),
+                        ),
                       );
                     } else {
                       return Container(
@@ -235,7 +239,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: Material(
                           type: MaterialType.transparency,
                           child: InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              ref.watch(signInProvider.notifier).signIn(
+                                  context: context,
+                                  email: email!.text,
+                                  password: password!.text);
+                            },
                             child: Center(
                               child: Text(
                                 "Login",

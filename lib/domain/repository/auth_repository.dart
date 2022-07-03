@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
-
-
 
 abstract class BaseAuthRepository {
   Future<Either<String, User>> signInWithEmailAndPassword(
@@ -11,7 +10,6 @@ abstract class BaseAuthRepository {
   Future<Either<String, User>> createUserWithEmailAndPassword(
       String email, String password);
 }
-
 
 class AuthRepository extends BaseAuthRepository {
   //final BaseAuthRepository _baseAuthRepository = FirebaseAuthRepository();
@@ -29,6 +27,7 @@ class AuthRepository extends BaseAuthRepository {
       } else if (e.code == 'wrong-password') {
         return const Left('Wrong password provided for that user.');
       } else {
+        debugPrint(e.message);
         return Left(e.message!);
       }
     }
@@ -47,10 +46,9 @@ class AuthRepository extends BaseAuthRepository {
       } else if (e.code == 'weak-password') {
         return const Left('Password is too weak.');
       } else {
+        debugPrint(e.message);
         return Left(e.message!);
       }
     }
   }
 }
-
-
