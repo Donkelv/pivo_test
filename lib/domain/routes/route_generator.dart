@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pivo_test/presentation/screens/onboarding_screen.dart';
-import 'package:pivo_test/presentation/screens/signup_screen.dart';
 
 class RouteGenerator {
   // static const String login = "/";
