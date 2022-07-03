@@ -95,20 +95,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             showBarModalBottomSheet(
                                 context: context,
                                 shape: const RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.zero
-                                ),
+                                    borderRadius: BorderRadius.zero),
                                 topControl: Container(
-                      width: 50.0.w,
-                      height: 6.0.h,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        color: ColorConst.blackColor,
-                      ),
-                    ),
+                                  width: 50.0.w,
+                                  height: 6.0.h,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20.0),
+                                    color: ColorConst.blackColor,
+                                  ),
+                                ),
                                 barrierColor: Colors.transparent,
-                                backgroundColor: ColorConst.blackColor,
-                                builder: (context) {
-                                  return const LoginScreen();
+                                backgroundColor: Colors.transparent,
+                                builder: (BuildContext context) {
+                                  return const LoginScreen(
+                                    
+                                  );
                                 });
                           },
                           child: Center(
