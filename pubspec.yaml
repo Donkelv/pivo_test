@@ -47,6 +47,7 @@ dependencies:
   fluttertoast: ^8.0.9
   modal_bottom_sheet: ^2.1.0
   flutter_svg: any
+  cloud_firestore: any
 
 dev_dependencies:
   flutter_test:
