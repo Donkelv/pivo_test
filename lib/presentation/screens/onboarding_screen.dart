@@ -4,6 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pivo_test/data/constants/color_const.dart';
 import 'package:pivo_test/data/constants/image_const.dart';
 import 'package:pivo_test/data/constants/theme.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
+import 'package:pivo_test/presentation/screens/login_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({Key? key}) : super(key: key);
@@ -49,17 +51,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           width: size.width,
           height: size.height,
           decoration: const BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage(ImageConst.backGround),
-              fit: BoxFit.cover,
-            )
-          ),
+              image: DecorationImage(
+            image: AssetImage(ImageConst.backGround),
+            fit: BoxFit.cover,
+          )),
           child: Stack(
             children: [
               Align(
                 alignment: Alignment.center,
-                child: Text("Herbalova", style: CustomTheme.largeText(context).copyWith(color: ColorConst.whiteColor,),
-              ),
+                child: Text(
+                  "Herbalova",
+                  style: CustomTheme.largeText(context).copyWith(
+                    color: ColorConst.whiteColor,
+                  ),
+                ),
               ),
               Positioned(
                 bottom: 0.0,
@@ -81,22 +86,44 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                     Container(
                       width: size.width,
-                      height:70.0.h,
+                      height: 70.0.h,
                       color: ColorConst.blackColor,
                       child: Material(
                         type: MaterialType.transparency,
                         child: InkWell(
-                          onTap: (){},
+                          onTap: () {
+                            showBarModalBottomSheet(
+                                context: context,
+                                shape: const RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.zero
+                                ),
+                                topControl: Container(
+                      width: 50.0.w,
+                      height: 6.0.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20.0),
+                        color: ColorConst.blackColor,
+                      ),
+                    ),
+                                barrierColor: Colors.transparent,
+                                backgroundColor: ColorConst.blackColor,
+                                builder: (context) {
+                                  return const LoginScreen();
+                                });
+                          },
                           child: Center(
-                            child: Text("Sign in to your account", style: CustomTheme.mediumText(context).copyWith(color: ColorConst.whiteColor,),
-                          ),
+                            child: Text(
+                              "Sign in to your account",
+                              style: CustomTheme.mediumText(context).copyWith(
+                                color: ColorConst.whiteColor,
+                              ),
+                            ),
                           ),
                         ),
                       ),
                     ),
                   ],
                 ),
-              
               )
             ],
           ),
