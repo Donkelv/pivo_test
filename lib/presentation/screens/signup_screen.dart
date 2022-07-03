@@ -27,13 +27,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController? email;
   TextEditingController? password;
   TextEditingController? name;
-  bool touched = false;
+  bool touched = true;
 
   @override
   void initState() {
     email = TextEditingController();
     password = TextEditingController();
     name = TextEditingController();
+    
     super.initState();
   }
 

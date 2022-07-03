@@ -24,7 +24,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   TextEditingController? email;
   TextEditingController? password;
-  bool touched = false;
+  bool touched = true;
 
   @override
   void initState() {
@@ -184,6 +184,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                         showBarModalBottomSheet(
+                          
                             isDismissible: false,
                             context: context,
                             shape: const RoundedRectangleBorder(
